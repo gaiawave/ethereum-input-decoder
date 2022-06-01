@@ -41,12 +41,15 @@ class FourByteDirectory(object):
     @staticmethod
     def parse_text_signature(text_signature):
         # no need for a fully blown parser here for now for the sake of minimal dependencies
+        # Added parsing for inputs with parantheses
         name, rest = text_signature.split("(", 1)
         args, rest = rest.strip().rsplit(")", 1)
         args = args.strip()
         return {'name': name.strip(),
                 'type': 'function',
-                'inputs': [{'name': 'arg%d' % i, 'type': a.strip()} for i, a in enumerate(args.split(",")) if args],
+                'inputs': [{'name': 'arg%d' % i,
+                            'type': a.strip()} for i, a in enumerate(
+                    [i.strip() for i in re.split(r',(?![^\(]*[\)])', args)]) if args],
                 'outputs': []}
 
     @staticmethod
