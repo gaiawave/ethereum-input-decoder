@@ -1,3 +1,7 @@
+# NOTE
+Edited to include support for function types that have parantheses and commas in them.
+Ex. transformERC20(address,address,uint256,uint256,(uint32,bytes)[])
+
 # ethereum-input-decoder
 Decode transaction inputs and constructor arguments based on the ethereum contract ABI. Tries to lookup function
 signature hashes from 4bytes.directory.
