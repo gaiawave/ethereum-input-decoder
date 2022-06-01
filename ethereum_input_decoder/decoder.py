@@ -6,6 +6,7 @@ from eth_abi.abi import decode_abi
 import eth_abi.exceptions
 import binascii
 import requests
+import re
 
 
 class InputDecoderException(Exception):
